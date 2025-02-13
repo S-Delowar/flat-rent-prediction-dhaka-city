@@ -1,10 +1,13 @@
 # Component
 import os
 from pathlib import Path
+import sys
 from pymongo.mongo_client import MongoClient
 import pandas as pd
 
 from dotenv import load_dotenv
+
+from src.utils.exception import CustomException
 
 load_dotenv()
 
@@ -39,5 +42,5 @@ class DataIngestion:
             df.to_csv(df_save_path, index=False)
             
         except Exception as e:
-            raise e
+            raise CustomException(str(e), sys)
         

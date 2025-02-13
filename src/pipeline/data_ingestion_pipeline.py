@@ -1,4 +1,5 @@
 # pipeline:
+import sys
 from src.components.data_ingestion import DataIngestion
 from src.config.configuration import ConfigurationManager
 from src.utils.constant import CONFIG_FILE_PATH
@@ -17,6 +18,6 @@ def run_ingestion_pipeline():
         data_ingestion.ingest_data()
         logging.info("Completed Ingestion of data")
     except Exception as e:
-        raise e
+        raise CustomException(str(e), sys)
 
     
